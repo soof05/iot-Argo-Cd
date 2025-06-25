@@ -31,7 +31,7 @@ else
 fi
 
 echo "🛠 Creating K3d cluster..."
-k3d cluster create iot-cluster --servers 1 --agents 1 --port "8888:8888@loadbalancer"
+k3d cluster create iot-cluster --servers 1 --agents 1 --port "8888:80@loadbalancer"
 
 echo "🔧 Setting kubeconfig context..."
 export KUBECONFIG="$(k3d kubeconfig write iot-cluster)"
