@@ -36,14 +36,14 @@ else
 fi
 
 echo "🛠 Creating K3d cluster..."
-k3d cluster create iot-cluster
+sudo k3d cluster create iot-cluster
 
 echo "🔧 Setting kubeconfig context..."
 export KUBECONFIG="$(k3d kubeconfig write iot-cluster)"
 
 echo "📂 Creating namespaces..."
-kubectl create namespace argocd || echo "Namespace argocd already exists"
-kubectl create namespace dev || echo "Namespace dev already exists"
+sudo kubectl create namespace argocd || echo "Namespace argocd already exists"
+sudo kubectl create namespace dev || echo "Namespace dev already exists"
 
 echo "🚀 Installing Argo CD..."
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml

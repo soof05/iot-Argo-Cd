@@ -5,7 +5,7 @@ RED="\033[31m"
 RESET="\033[0m"
 
 
-kubectl apply -f ../app/application.yaml
+sudo kubectl apply -f ../app/deployment.yaml
 
 
-echo -e "${GREEN}PORT-FORWARD : kubectl port-forward svc/playground-service -n dev 8888:8080${RESET}"
+echo -e "${GREEN}PORT-FORWARD : sudo kubectl port-forward svc/playground-service -n dev 8888:8080${RESET}"
