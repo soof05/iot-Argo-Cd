@@ -1,5 +1,10 @@
 #!/bin/bash
 
+GREEN="\033[32m"
+RED="\033[31m"
+RESET="\033[0m"
+
+
 set -e
 
 echo "🧰 Updating and installing dependencies..."
@@ -31,7 +36,7 @@ else
 fi
 
 echo "🛠 Creating K3d cluster..."
-k3d cluster create iot-cluster --servers 1 --agents 1 --port "8888:80@loadbalancer"
+k3d cluster create iot-cluster"
 
 echo "🔧 Setting kubeconfig context..."
 export KUBECONFIG="$(k3d kubeconfig write iot-cluster)"
@@ -45,6 +50,11 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/st
 
 echo "⏳ Waiting for Argo CD pods to be ready..."
 kubectl wait --for=condition=available --timeout=300s deployment/argocd-server -n argocd
+
+# password to argocd (user: admin)
+echo -n "${GREEN}ARGOCD PASSWORD : "
+  sudo kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath="{.data.password}" | base64 --decode
+echo "${RESET}"
 
 echo "✅ Setup complete!"
 echo "📌 You can now access Argo CD with:"
