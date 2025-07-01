@@ -1,10 +1,5 @@
 #!/bin/bash
 
-GREEN="\033[32m"
-RED="\033[31m"
-RESET="\033[0m"
-
-
 set -e
 
 echo "🧰 Updating and installing dependencies..."
@@ -55,6 +50,6 @@ echo "✅ Setup complete!"
 echo "📌 You can now access Argo CD with:"
 echo "   kubectl port-forward svc/argocd-server -n argocd 8080:443"
 echo "🌐 Then open https://localhost:8080"
-
-#command to get the password for argocd
-# kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+echo "   The username is admin by default"
+echo "   Use the following command to get the password"
+echo "   sudo kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d"

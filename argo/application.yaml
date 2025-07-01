@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/soof05/iot-Argo-Cd.git
+    repoURL: https://github.com/soof05/sel-ouaf.git
     targetRevision: HEAD
     path: app
   destination:

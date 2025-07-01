@@ -1,11 +1,8 @@
 #!/bin/bash
 
-GREEN="\033[32m"
-RED="\033[31m"
-RESET="\033[0m"
-
 
 sudo kubectl apply -f ../app/deployment.yaml
+sudo kubectl apply -f ../argo/application.yaml
 
 
-echo -e "${GREEN}PORT-FORWARD : sudo kubectl port-forward svc/playground-service -n dev 8888:8080${RESET}"
+echo "PORT-FORWARD : sudo kubectl port-forward svc/playground-service -n dev 8888:8080"
